@@ -10,7 +10,7 @@ export default function DotsDisplay({ showDots, dots, gameState, feedback }) {
         dots.map((dot, index) => (
           <div
             key={index}
-            className="absolute w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute w-6 h-6 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${dot.x}%`, top: `${dot.y}%` }}
           />
         ))}

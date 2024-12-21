@@ -97,63 +97,61 @@ export default function SubitizingGame() {
   }, [gameState, lastGuess, dots]);
 
   return (
-    <div className="p-4 w-full">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow w-full">
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-6">Subitizing Test</h2>
-          <GameControls
-            displayTime={displayTime}
-            setDisplayTime={setDisplayTime}
-            feedbackTime={feedbackTime}
-            setFeedbackTime={setFeedbackTime}
-            startNewRound={() =>
-              startNewRound(
-                setGameState,
-                setDots,
-                generateRandomDots,
-                minDots,
-                maxDots,
-                setLastGuess
-              )
-            }
+    <div className="max-w-4xl mx-auto bg-white rounded-lg shadow w-full overflow-x-auto p-4 sm:p-2">
+      <div className="p-6 sm:p-4">
+        <h2 className="text-2xl font-bold mb-6">Subitizing Test</h2>
+        <GameControls
+          displayTime={displayTime}
+          setDisplayTime={setDisplayTime}
+          feedbackTime={feedbackTime}
+          setFeedbackTime={setFeedbackTime}
+          startNewRound={() =>
+            startNewRound(
+              setGameState,
+              setDots,
+              generateRandomDots,
+              minDots,
+              maxDots,
+              setLastGuess
+            )
+          }
+        />
+        <div className="space-y-6">
+          <DotsDisplay
+            showDots={showDots}
+            dots={dots}
+            gameState={gameState}
+            feedback={feedback}
           />
-          <div className="space-y-6">
-            <DotsDisplay
-              showDots={showDots}
-              dots={dots}
-              gameState={gameState}
-              feedback={feedback}
-            />
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <ScoreDisplay resultsMatrix={resultsMatrix} maxDots={maxDots} />
-                <button
-                  onClick={() =>
-                    handleRestart(setResultsMatrix, initializeMatrix, () =>
-                      startNewRound(
-                        setGameState,
-                        setDots,
-                        generateRandomDots,
-                        minDots,
-                        maxDots,
-                        setLastGuess
-                      )
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <ScoreDisplay resultsMatrix={resultsMatrix} maxDots={maxDots} />
+              <button
+                onClick={() =>
+                  handleRestart(setResultsMatrix, initializeMatrix, () =>
+                    startNewRound(
+                      setGameState,
+                      setDots,
+                      generateRandomDots,
+                      minDots,
+                      maxDots,
+                      setLastGuess
                     )
-                  }
-                  className="px-4 py-2 bg-red-100 text-red-700 rounded hover:bg-red-200"
-                >
-                  Reset Stats
-                </button>
-              </div>
-              <div className="min-h-[200px] flex flex-col items-center justify-center w-full">
-                <GuessButtons maxDots={maxDots} handleGuess={handleGuess} />
-              </div>
-              <StatsTable
-                maxDots={maxDots}
-                resultsMatrix={resultsMatrix}
-                calculateStats={() => calculateStats(resultsMatrix, maxDots)}
-              />
+                  )
+                }
+                className="px-4 py-2 bg-red-100 text-red-700 rounded hover:bg-red-200"
+              >
+                Reset Stats
+              </button>
             </div>
+            <div className="min-h-[200px] flex flex-col items-center justify-center w-full">
+              <GuessButtons maxDots={maxDots} handleGuess={handleGuess} />
+            </div>
+            <StatsTable
+              maxDots={maxDots}
+              resultsMatrix={resultsMatrix}
+              calculateStats={() => calculateStats(resultsMatrix, maxDots)}
+            />
           </div>
         </div>
       </div>
