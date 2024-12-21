@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function DotsDisplay({ showDots, dots, gameState, feedback }) {
   return (
     <div className="relative w-96 h-96 mx-auto bg-gray-50">
