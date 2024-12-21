@@ -39,8 +39,8 @@ export default function SubitizingGame() {
   const [lastGuess, setLastGuess] = useState(null);
   const [displayTime, setDisplayTime] = useState(500);
   const [feedbackTime, setFeedbackTime] = useState(1000);
-  const minDots = 5;
-  const maxDots = 15;
+  const minDots = 1;
+  const maxDots = 10;
   const [readyTime] = useState(500);
   const [resultsMatrix, setResultsMatrix] = useState(initializeMatrix);
 
